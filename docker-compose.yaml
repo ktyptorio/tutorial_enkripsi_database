@@ -1,0 +1,40 @@
+version: '3'
+services:
+  vault:
+    image: hashicorp/vault:latest
+    hostname: vault
+    container_name: vault
+    ports:
+      - 8200:8200
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=12345678
+    networks:
+      - mynetwork
+
+  mariadb:
+    image: mariadb
+    hostname: mariadb
+    container_name: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=username
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306:3306
+    networks:
+      - mynetwork
+
+  api_service:
+    build: .
+    hostname: api_service
+    container_name: api_service
+    ports:
+      - 8000:8000
+    networks:
+      - mynetwork
+    depends_on:
+      - mariadb
+      - vault
+
+networks:
+  mynetwork:
