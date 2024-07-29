@@ -1,5 +1,3 @@
-Tentu, berikut adalah README.md dalam bahasa Indonesia yang sudah dirapikan:
-
 # Enkripsi dan Keamanan Data
 
 Panduan ini akan membimbing Anda melalui proses penyiapan dan penggunaan sistem basis data terenkripsi menggunakan Vault, MariaDB, dan layanan API kustom.
