@@ -122,6 +122,23 @@ Panduan ini akan membimbing Anda melalui proses penyiapan dan penggunaan sistem 
 Akses dokumentasi API di `http://<IP>:8000/docs`
 
 1. Enkripsi data:
+   Untuk melakukan enkripsi data, Anda dapat menggunakan endpoint `POST /write` pada dokumentasi API Service. Kemudian gunakan data berikut sebagai sampel sebagai data yang akan dienkripsi sebelum dimasukkan ke dalam database.
+   ```bash
+      {
+       "data":{
+         "name": "Andi",
+         "gender": "Male",
+         "age": 35,
+         "address": "Jl. Diponegoro No. 321, Bandung",
+         "phone_number": "+628987654321",
+         "credit_card_number": "7890-1234-5678-9012"
+       },
+       "table":"encrypted_personal_data"
+      }
+   ```
+   Data di atas terdiri dari 2 buah key, yaitu `data` dan `table`. Key `data` terdiri dari beberapa key lainnya. Sedangkan `table` berisi nama table yang sudah dibuat di dalam database.
+
+   Berikut ini merupakan perintah untuk melakukan enkripsi data melalui terminal Anda.
    ```bash
    curl -X 'POST' \
      'http://localhost:8000/write' \
